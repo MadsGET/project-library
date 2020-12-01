@@ -1,0 +1,88 @@
+﻿<!DOCTYPE HTML>
+
+
+<html>
+	<head>
+		<title>My projects</title>
+		<meta charset="utf-8" />
+		<style>
+			body
+			{
+				height:100vh;
+				width:100vw;
+				margin:0;
+				font-size: 4vmin;
+				color:black;
+				background-color:tan;
+				user-select:none;
+			}
+
+			#application > div
+			{
+				height: 8vh;
+				width: 40vw;
+				margin: 1% auto;
+				border: 0.1vmin solid rgba(0, 0, 0, 0.5);
+				grid-template-areas: 'text button';
+				grid-template-columns:4fr 0.5fr;
+				grid-template-rows:1fr;
+				display:grid;
+			}
+
+			.text
+			{
+				margin:auto;
+				margin-left:2.5%;
+			}
+			.button
+			{
+				background-color:none;
+				background-image:url('icon_ArrowR.svg');
+				background-position:center;
+				background-repeat:no-repeat;
+				background-size:20% 50%;
+			}
+
+			.button:hover
+			{
+				opacity:0.75;
+			}
+
+		</style>
+	</head>
+	<body onload="drawView();">
+		<div id="application"></div>
+		<script>
+			let links =
+			[
+					{ title: 'Portfolio', link: 'https://madsget.github.io/html_portfolio/' },
+					{ title: 'Time Manager', link: 'https://madsget.github.io/time-manager/' },
+					{ title: 'Puzzle Game', link: 'https://madsget.github.io/intro_oppgave/GameSetup.html' },
+					{ title: 'Image Viewer', link: 'https://madsget.github.io/image_viewer/' },
+					{ title: 'Math Library', link: 'https://madsget.github.io/math-library/math.js' },
+					{ title: 'Time Library', link: 'https://madsget.github.io/time-library/time.js' },
+			];
+
+			let generatedButtons = '';
+			for (let i = 0; i < links.length; i++)
+			{
+				generatedButtons += `
+						<div>
+							<p class="text">${links[i].title}</p>
+							<a class="button" href="${links[i].link}"></a>
+						</div>
+				`;
+			}
+			
+			function drawView()
+			{
+				document.getElementById('application').innerHTML =
+					`
+						<h1 style="margin:auto;">Project List</h1>
+						<hr>
+						${generatedButtons}
+					`;
+			}
+		</script>
+	</body>
+</html>
